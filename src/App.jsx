@@ -21,7 +21,7 @@ function App() {
 
   const chooseChoice = (card) => {
     // console.log(card)
-    one ? setTwo(one) : setOne(card);
+    one ? setTwo(card) : setOne(card);
   };
 
   const reopenTurn = () => {
@@ -46,7 +46,7 @@ function App() {
         reopenTurn();
       } else {
         console.log("Don't matchess Play Again?");
-        reopenTurn();
+       setTimeout(() =>  reopenTurn(), 1000);
       }
     }
   }, [one, two]);
@@ -58,7 +58,7 @@ function App() {
 
       <div className="card-grid">
         {cards?.map((card) => (
-          <Card key={card.id} card={card} chooseChoice={chooseChoice} flip={} />
+          <Card key={card.id} card={card} chooseChoice={chooseChoice} flip={card === one || card === two || card.matched} />
         ))}
       </div>
     </>
