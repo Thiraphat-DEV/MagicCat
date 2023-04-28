@@ -15,9 +15,15 @@ function App() {
     const shuffed = [...imgsCard, ...imgsCard]
       .sort(() => Math.random() - 0.5)
       .map((card) => ({ ...card, id: Math.random() }));
+    setOne(null)
+    setTwo(null)
     setCards(shuffed);
     setTurns(0);
   };
+  // start new game automatic
+  useEffect(() => {
+    createCard()
+  })
 
   const chooseChoice = (card) => {
     // console.log(card)
@@ -69,6 +75,8 @@ function App() {
           />
         ))}
       </div>
+
+      <span>Your Turn: {turns}</span>
     </>
   );
 }
