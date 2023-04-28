@@ -10,7 +10,7 @@ function App() {
 
   const [one, setOne] = useState(null);
   const [two, setTwo] = useState(null);
-
+  const [disabled, setDisabled] = useState(false);
   const createCard = () => {
     const shuffed = [...imgsCard, ...imgsCard]
       .sort(() => Math.random() - 0.5)
@@ -28,25 +28,27 @@ function App() {
     setOne(null);
     setTwo(null);
     setTurns((prev) => prev + 1);
+    setDisabled(false);
   };
 
   useEffect(() => {
     if (one && two) {
+      setDisabled(true);
       if (one.path === two.path) {
         // console.log("Matchesssss");
-        setCards(prev => (
-          prev.map(card => {
-            if(card.path === one.path) {
-              return {...card, matched: true}
-            }else {
-              return card
+        setCards((prev) =>
+          prev.map((card) => {
+            if (card.path === one.path) {
+              return { ...card, matched: true };
+            } else {
+              return card;
             }
           })
-        ))
+        );
         reopenTurn();
       } else {
         console.log("Don't matchess Play Again?");
-       setTimeout(() =>  reopenTurn(), 1000);
+        setTimeout(() => reopenTurn(), 1000);
       }
     }
   }, [one, two]);
@@ -58,7 +60,13 @@ function App() {
 
       <div className="card-grid">
         {cards?.map((card) => (
-          <Card key={card.id} card={card} chooseChoice={chooseChoice} flip={card === one || card === two || card.matched} />
+          <Card
+            key={card.id}
+            card={card}
+            chooseChoice={chooseChoice}
+            flip={card === one || card === two || card.matched}
+            disabled={disabled}
+          />
         ))}
       </div>
     </>
