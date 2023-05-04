@@ -1,9 +1,12 @@
 import "./Card.css";
 
+// eslint-disable-next-line react/prop-types
 export default function Card({ card, chooseChoice, flip, disabled }) {
   const choiceClick = () => {
     // if !disabled then show card choice 👇
-    disabled ?? chooseChoice(card);
+    if(!disabled) {
+      chooseChoice(card);
+    }
   };
   return (
     <>
@@ -13,9 +16,8 @@ export default function Card({ card, chooseChoice, flip, disabled }) {
             src={card.path}
             alt="front card"
             className="front"
-            onClick={choiceClick}
           />
-          <img src={card.path} alt="back card" className="back" />
+          <img src="src\assets\franky.jpg" onClick={choiceClick} alt="back card" className="back" />
         </div>
       </div>
     </>

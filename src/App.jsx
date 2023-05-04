@@ -1,10 +1,27 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import "./App.css";
 import Card from "./components/Card/Card";
-import { useEffect } from "react";
+
 
 function App() {
-  const imgsCard = [{ path: "card", matched: false }];
+  const imgsCard = [
+    { path: "src/assets/koot_1.jpg", matched: false },
+    { path: "src/assets/koot_2.jpg", matched: false },
+    { path: "src/assets/koot_3.jpg", matched: false },
+    { path: "src/assets/fa_1.jpg", matched: false },
+    { path: "src/assets/fa_2.jpg", matched: false },
+    { path: "src/assets/fam_1.jpg", matched: false },
+    { path: "src/assets/fam_2.jpg", matched: false },
+    { path: "src/assets/fi_1.jpg", matched: false },
+    { path: "src/assets/fi_2.jpg", matched: false },
+    { path: "src/assets/frank_1.jpg", matched: false },
+    { path: "src/assets/frank_2.jpg", matched: false },
+    { path: "src/assets/lu_1.jpg", matched: false },
+    { path: "src/assets/lu_2.jpg", matched: false },
+    { path: "src/assets/ro_1.jpg", matched: false },
+    { path: "src/assets/ro_2.jpg", matched: false },
+    { path: "src/assets/koot_4.jpg", matched: false },
+  ];
   const [cards, setCards] = useState([]);
   const [turns, setTurns] = useState(0); // identify true(1) & false(0)
 
@@ -39,13 +56,13 @@ function App() {
 
   useEffect(() => {
     if (one && two) {
-      setDisabled(true);
-      if (one.path === two.path) {
-        // console.log("Matchesssss");
+      // setDisabled(true);
+      if (one.path == two.path) {
+        console.log("Matchesssss");
         setCards((prev) =>
           prev.map((card) => {
-            if (card.path === one.path) {
-              return { ...card, matched: true };
+            if (card.path == one.path) {
+              return ({ ...card, matched: true });
             } else {
               return card;
             }
@@ -65,12 +82,12 @@ function App() {
       <button onClick={createCard}>Enjoy The Game!</button>
 
       <div className="card-grid">
-        {cards?.map((card) => (
+        {cards.map((card) => (
           <Card
             key={card.id}
             card={card}
             chooseChoice={chooseChoice}
-            flip={card === one || card === two || card.matched}
+            flip={card == one || card == two || card.matched}
             disabled={disabled}
           />
         ))}
