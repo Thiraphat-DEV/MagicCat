@@ -37,11 +37,7 @@ function App() {
     setCards(shuffed);
     setTurns(0);
   };
-  // start new game automatic
-  useEffect(() => {
-    createCard()
-  })
-
+  
   const chooseChoice = (card) => {
     // console.log(card)
     one ? setTwo(card) : setOne(card);
