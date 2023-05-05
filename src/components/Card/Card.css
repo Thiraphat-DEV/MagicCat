@@ -4,13 +4,14 @@
 
 .card img {
 	width: 100%;
-	display: block;
 	border: 2px solid #000;
 	border-radius: 3em;
 
 }
 
 .card .front {
+	width: 18rem;
+	height: 21rem;
 	transform: rotateY(90deg);
 	position: absolute;
 }

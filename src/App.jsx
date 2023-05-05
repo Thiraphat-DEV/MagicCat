@@ -24,7 +24,6 @@ function App() {
   ];
   const [cards, setCards] = useState([]);
   const [turns, setTurns] = useState(0); // identify true(1) & false(0)
-
   const [one, setOne] = useState(null);
   const [two, setTwo] = useState(null);
   const [disabled, setDisabled] = useState(false);
@@ -74,7 +73,6 @@ function App() {
   return (
     <>
       <h1>Magic Cat With Boaty</h1>
-
       <button onClick={createCard}>Enjoy The Game!</button>
 
       <div className="card-grid">
