@@ -13,7 +13,7 @@ export default function Card({ card, chooseChoice, flip, disabled }) {
       <div className="card">
         <div className={flip ? "flip" : ""}>
           <img
-            src={card.path}
+            src={card?.path}
             alt="front card"
             className="front"
           />
